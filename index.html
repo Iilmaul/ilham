@@ -1,192 +1,589 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio PKL - Ilham Maulana</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio PKL - Ilham Maulana</title>
 
-    <style>
-        *{
-            margin:0;
-            padding:0;
-            box-sizing:border-box;
-            font-family: Arial, sans-serif;
-        }
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 
-        body{
-            background:#f4f6f9;
-            color:#333;
-            line-height:1.6;
-        }
+body{
+    background: linear-gradient(135deg, #090d16, #111827);
+    color:#e2e8f0;
+    line-height:1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
 
-        header{
-            background:#0d6efd;
-            color:white;
-            text-align:center;
-            padding:40px;
-        }
+/* HEADER - CYBER DARK MODE */
+header{
+    background:#0b0f19;
+    color:white;
+    text-align:center;
+    padding:60px 20px 40px 20px;
+    border-bottom: 1px solid #1e293b;
+}
 
-        header h1{
-            font-size:40px;
-        }
+/* ANIMASI SINYAL FOTO PROFIL */
+.profile-container {
+    position: relative;
+    width: 180px;
+    height: 180px;
+    margin: 0 auto 20px auto;
+}
 
-        nav{
-            background:#083b8a;
-            padding:15px;
-            text-align:center;
-        }
+.profile-img{
+    width: 100%;
+    height: 100%;
+    border-radius:50%;
+    object-fit:cover;
+    border:4px solid #3b82f6;
+    position: relative;
+    z-index: 2;
+}
 
-        nav a{
-            color:white;
-            text-decoration:none;
-            margin:0 15px;
-            font-weight:bold;
-        }
+.profile-container::before, .profile-container::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    border-radius: 50%;
+    background: rgba(59, 130, 246, 0.4);
+    z-index: 1;
+    animation: pulseSignal 3s infinite linear;
+}
 
-        section{
-            max-width:1000px;
-            margin:30px auto;
-            background:white;
-            padding:25px;
-            border-radius:10px;
-            box-shadow:0 2px 8px rgba(0,0,0,0.1);
-        }
+.profile-container::after {
+    animation-delay: 1.5s;
+}
 
-        h2{
-            color:#0d6efd;
-            margin-bottom:15px;
-        }
+@keyframes pulseSignal {
+    0% { transform: scale(1); opacity: 0.8; }
+    100% { transform: scale(1.4); opacity: 0; }
+}
 
-        ul{
-            margin-left:20px;
-        }
+header h1{
+    font-size:38px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    background: linear-gradient(to right, #ffffff, #3b82f6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 15px;
+}
 
-        .card{
-            background:#eef4ff;
-            padding:15px;
-            border-radius:8px;
-            margin-top:10px;
-        }
+/* CONTAINER TEKS JALAN & NYALA */
+.marquee-container {
+    max-width: 600px;
+    margin: 0 auto;
+    overflow: hidden;
+    white-space: nowrap;
+    border-radius: 6px;
+    padding: 5px 0;
+}
 
-        footer{
-            background:#0d6efd;
-            color:white;
-            text-align:center;
-            padding:20px;
-            margin-top:30px;
-        }
-    </style>
+/* TULISAN JALAN & GLOWING */
+.marquee-text {
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 600;
+    color: #60a5fa;
+    text-shadow: 0 0 10px rgba(59, 130, 246, 0.8), 0 0 20px rgba(59, 130, 246, 0.4);
+    animation: jalanKiri 12s infinite linear;
+    padding-left: 100%;
+}
+
+@keyframes jalanKiri {
+    0% { transform: translate3d(0, 0, 0); }
+    100% { transform: translate3d(-100%, 0, 0); }
+}
+
+/* MAIN LAYOUT */
+.main-layout {
+    max-width: 1200px;
+    width: 100%;
+    margin: auto;
+    padding: 40px 20px;
+    display: flex;
+    gap: 30px;
+    flex-grow: 1;
+}
+
+/* SIDEBAR NAVIGASI */
+.sidebar {
+    width: 250px;
+    flex-shrink: 0;
+}
+
+.sidebar-nav {
+    background: #111827;
+    padding: 20px;
+    border-radius: 18px;
+    border: 1px solid #1e293b;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    position: sticky;
+    top: 30px;
+}
+
+.sidebar-nav h3 {
+    color: #fff;
+    margin-bottom: 15px;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 2px solid #3b82f6;
+    padding-bottom: 8px;
+}
+
+.sidebar-nav ul {
+    list-style: none;
+}
+
+.sidebar-nav ul li {
+    margin-bottom: 8px;
+}
+
+.sidebar-nav ul li a {
+    text-decoration: none;
+    color: #94a3b8;
+    font-weight: 500;
+    display: block;
+    padding: 10px 14px;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.sidebar-nav ul li a.active, .sidebar-nav ul li a:hover {
+    background: rgba(59, 130, 246, 0.15);
+    color: #60a5fa;
+    border-left: 4px solid #3b82f6;
+    padding-left: 18px;
+    font-weight: 600;
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.1);
+}
+
+/* CONTAINER KONTEN UTAMA */
+.container{
+    flex-grow: 1;
+}
+
+/* ANIMASI TIAP PINDAH TAB (GERAK NAIK + MEMUDAR) */
+.tab-content {
+    display: none;
+    background: #111827;
+    padding: 35px;
+    border-radius: 18px;
+    border: 1px solid #1e293b;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+
+.tab-content.active {
+    display: block;
+    animation: tabSlideUp 0.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+@keyframes tabSlideUp {
+    0% { 
+        opacity: 0; 
+        transform: translateY(30px); 
+    }
+    100% { 
+        opacity: 1; 
+        transform: translateY(0); 
+    }
+}
+
+/* JUDUL HALAMAN */
+h2{
+    color:#fff;
+    margin-bottom:25px;
+    border-left:5px solid #3b82f6;
+    padding-left:12px;
+    font-size: 24px;
+}
+
+/* GRID KEAHLIAN */
+.skills-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:20px;
+}
+
+/* KOTAK SUB-KEAHLIAN */
+.skill-box{
+    background:#1e293b;
+    padding:20px;
+    border-radius:14px;
+    border:1px solid #334155;
+    transition: all 0.3s ease;
+}
+
+.skill-box:hover{
+    background:#1e293b;
+    border-color: #3b82f6;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 20px rgba(59, 130, 246, 0.15);
+}
+
+.skill-box h3{
+    color:#60a5fa;
+    margin-bottom:12px;
+    font-size: 18px;
+}
+
+.skill-box ul {
+    padding-left: 18px;
+}
+
+.skill-box ul li {
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: #cbd5e1;
+}
+
+/* ITEM PROJEK & SERTIFIKAT */
+.project-item, .cert-item {
+    background: #1e293b;
+    border: 1px solid #334155;
+    padding: 22px;
+    border-radius: 14px;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+}
+
+.project-item:hover, .cert-item:hover {
+    border-color: #3b82f6;
+    box-shadow: 0 5px 20px rgba(59, 130, 246, 0.1);
+}
+
+.project-item h4, .cert-item h4 {
+    color: #fff;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.project-item p, .cert-item p {
+    color: #94a3b8;
+    font-size: 14px;
+}
+
+.project-tags {
+    margin-top: 12px;
+    margin-bottom: 18px;
+}
+
+.tag {
+    display: inline-block;
+    background: rgba(59, 130, 246, 0.1);
+    color: #60a5fa;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    margin-right: 6px;
+    font-weight: 500;
+    border: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+/* LINK BUTTON */
+.btn-link {
+    display: inline-block;
+    color: #3b82f6;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    transition: 0.2s;
+}
+
+.btn-link:hover {
+    color: #60a5fa;
+    text-decoration: underline;
+}
+
+/* DOKUMEN SERTIFIKAT */
+.btn-cert {
+    background: #3b82f6; 
+    color: white !important; 
+    padding: 10px 20px; 
+    border-radius: 8px; 
+    text-decoration: none; 
+    display: inline-block;
+    transition: 0.3s;
+}
+
+.btn-cert:hover {
+    background: #2563eb;
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.4);
+}
+
+/* KONTAK */
+.contact p {
+    font-size: 15px;
+    color: #94a3b8;
+}
+
+.contact a{
+    text-decoration:none;
+    color:#3b82f6;
+    font-weight: 600;
+    font-size: 16px;
+    transition: 0.2s;
+}
+
+.contact a:hover {
+    color: #60a5fa;
+}
+
+footer{
+    background:#0b0f19;
+    color:#64748b;
+    text-align:center;
+    padding:25px;
+    margin-top:auto;
+    border-top: 1px solid #1e293b;
+    font-size: 14px;
+}
+
+/* RESPONSIVE LAYOUT (UNTUK HP) */
+@media (max-width: 768px) {
+    .main-layout {
+        flex-direction: column;
+    }
+    .sidebar {
+        width: 100%;
+    }
+    .sidebar-nav {
+        position: relative;
+        top: 0;
+    }
+}
+</style>
 </head>
+
 <body>
 
 <header>
-    <h1>Portfolio PKL</h1>
-    <p>Ilham Maulana</p>
-    <p>Teknik Jaringan Komputer dan Telekomunikasi (TJKT)</p>
+    <div class="profile-container">
+        <img src="foto-ilham.jpg" alt="Ilham Maulana" class="profile-img">
+    </div>
+    <h1>Ilham Maulana</h1>
+    
+    <div class="marquee-container">
+        <div class="marquee-text">
+             SMK Wikrama Bogor | TJKT (Teknik Jaringan Komputer dan Telekomunikasi) |
+        </div>
+    </div>
 </header>
 
-<nav>
-    <a href="#tentang">Tentang Saya</a>
-    <a href="#skill">Skill</a>
-    <a href="#linux">Linux</a>
-    <a href="#monitoring">Monitoring</a>
-    <a href="#proyek">Proyek</a>
-</nav>
+<div class="main-layout">
 
-<section id="tentang">
-    <h2>Tentang Saya</h2>
-    <p>
-        Halo, saya <b>Ilham Maulana</b>, siswa jurusan
-        <b>Teknik Jaringan Komputer dan Telekomunikasi (TJKT)</b>.
-        Saya memiliki minat dalam bidang jaringan komputer,
-        administrasi server Linux, monitoring sistem, dan keamanan jaringan.
-        Website ini dibuat sebagai dokumentasi kegiatan PKL dan portofolio saya.
-    </p>
-</section>
+    <aside class="sidebar">
+        <nav class="sidebar-nav">
+            <h3>Navigasi</h3>
+            <ul>
+                <li><a onclick="openTab(event, 'tentang')" class="tab-link active">Tentang Saya</a></li>
+                <li><a onclick="openTab(event, 'keahlian')" class="tab-link">Keahlian</a></li>
+                <li><a onclick="openTab(event, 'tools')" class="tab-link">Tools & Software</a></li>
+                <li><a onclick="openTab(event, 'sertifikat')" class="tab-link">Sertifikat</a></li>
+                <li><a onclick="openTab(event, 'projek')" class="tab-link">Projek</a></li>
+                <li><a onclick="openTab(event, 'kontak')" class="tab-link">Kontak</a></li>
+                <li><a href="https://drive.google.com/file/d/1zeOWJuM0QKpvv8c0CDJajRgdx0DfLp3T/view?usp=drive_link" target="_blank" class="tab-link">CV</a></li>
+            </ul>
+        </nav>
+    </aside>
 
-<section id="skill">
-    <h2>Keahlian</h2>
-    <ul>
-        <li>Instalasi dan Konfigurasi Linux</li>
-        <li>Dasar Networking (IP Address, Subnetting, Routing)</li>
-        <li>MikroTik Configuration</li>
-        <li>Windows Server</li>
-        <li>Web Server Apache & Nginx</li>
-        <li>SSH Remote Server</li>
-        <li>Monitoring Server</li>
-        <li>Troubleshooting Jaringan</li>
-    </ul>
-</section>
+    <div class="container">
 
-<section id="linux">
-    <h2>Pengalaman Linux</h2>
+        <section id="tentang" class="tab-content active">
+            <h2>Tentang Saya</h2>
+            <p style="margin-bottom: 10px;">
+                Halo, saya <strong>Ilham Maulana</strong>, siswa SMK Wikrama Bogor jurusan TJKT. Saya sedang mempersiapkan diri untuk PKL dan meningkatkan kemampuan di bidang IT.
+            </p>
+            <p>
+                Saya sendiri senang belajar hal baru, bekerja sama dalam tim, dan menyelesaikan tugas dengan baik.
+            </p>
+        </section>
 
-    <div class="card">
-        <h3>Ubuntu Server</h3>
-        <p>
-            Instalasi Ubuntu Server, konfigurasi user,
-            SSH, update package, dan manajemen service.
-        </p>
+        <section id="keahlian" class="tab-content">
+            <h2>Keahlian</h2>
+            <div class="skills-grid">
+                <div class="skill-box">
+                    <h3>Linux Server</h3>
+                    <ul>
+                        <li>Instalasi dan konfigurasi Debian Linux</li>
+                        <li>Remote Server menggunakan SSH</li>
+                        <li>Konfigurasi Apache Web Server</li>
+                        <li>Manajemen Package (APT)</li>
+                        <li>Konfigurasi Network Interface</li>
+                    </ul>
+                </div>
+
+                <div class="skill-box">
+                    <h3>Networking</h3>
+                    <ul>
+                        <li>Konfigurasi IPv4 Address</li>
+                        <li>Pembuatan kabel LAN Straight & Cross</li>
+                        <li>Crimping konektor RJ45</li>
+                        <li>Pengujian kabel LAN menggunakan LAN Tester</li>
+                    </ul>
+                </div>
+
+                <div class="skill-box">
+                    <h3>Monitoring</h3>
+                    <ul>
+                        <li>Nagios Core dasar</li>
+                        <li>Monitoring server & service</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="tools" class="tab-content">
+            <h2>Tools & Software</h2>
+            <div class="skills-grid">
+                <div class="skill-box">
+                    <h3>Networking Tools</h3>
+                    <ul>
+                        <li>Cisco Packet Tracer</li>
+                    </ul>
+                </div>
+
+                <div class="skill-box">
+                    <h3>Server Tools</h3>
+                    <ul>
+                        <li>PuTTY</li>
+                        <li>VirtualBox</li>
+                        <li>Linux Debian</li>
+                    </ul>
+                </div>
+
+                <div class="skill-box">
+                    <h3>Monitoring</h3>
+                    <ul>
+                        <li>Nagios Core</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="sertifikat" class="tab-content">
+            <h2>Sertifikat</h2>
+            
+            <div class="cert-item">
+                <h4>Virtual Machine Fundamental — Aguna Course</h4>
+                <p style="margin-bottom: 12px;">Sertifikat kelulusan kursus dasar pengelolaan mesin virtual (VM) dengan nilai ujian kelulusan memuaskan yaitu 90.</p>
+                <span class="tag">No. Sertifikat: AC-428-85965675-S1</span>
+                <br><br>
+                <a href="https://docs.google.com/document/d/1yMbGxeYBG6-zTSUWdUEp5P-3F64Cvl-o/edit?usp=sharing&ouid=114674494588030533728&rtpof=true&sd=true" target="_blank" class="btn-cert">📄 Lihat Laporan LKPD-Aguna-Mesin Virtual (2).docx</a>
+            </div>
+
+            <div class="cert-item">
+                <h4>Introduction to Cybersecurity — Cisco Networking Academy</h4>
+                <p style="margin-bottom: 12px;">Sertifikat penyelesaian kursus Introduction to Cybersecurity yang diselenggarakan oleh Digitalent Kominfo melalui program Cisco Networking Academy.</p>
+                <span class="tag">Tanggal Kelulusan: 19 Jan 2026</span>
+                <br><br>
+                <a href="https://drive.google.com/file/d/12Iffb3yk1K4P5N_5OvwK5G3WVE7QdBtX/view?usp=drive_link" target="_blank" class="btn-cert">📄 Lihat Sertifikat Introduction to Cybersecurity.pdf</a>
+            </div>
+        </section>
+
+        <section id="projek" class="tab-content">
+            <h2>Projek & Laporan Praktikum (LKPD)</h2>
+            
+            <div class="project-item">
+                <h4>SAMBA Server</h4>
+                <p>Membangun sistem public & private/group folder sharing menggunakan SAMBA Server pada Debian 11. Projek lintas jurusan (TJKT, PPLG, DKV) untuk mempermudah kolaborasi berkas tim lintas kompetensi.</p>
+                <div class="project-tags">
+                    <span class="tag">Debian 11</span>
+                    <span class="tag">SAMBA Server</span>
+                    <span class="tag">Folder Sharing</span>
+                </div>
+                <a href="https://docs.google.com/document/d/1sTDpqSn5RiHOTRTxRe2BiW9-NrFOixya/edit?usp=sharing&ouid=114674494588030533728&rtpof=true&sd=true" target="_blank" class="btn-link">📄 Buka Dokumen ilham LKPD Linux 4 - SAMBA Server.docx</a>
+            </div>
+
+            <div class="project-item">
+                <h4>DHCP Server</h4>
+                <p>Implementasi DHCP Server menggunakan paket isc-dhcp-server di Linux Debian 11 serta konfigurasi IP Reservation khusus berbasis MAC Address pada Client Windows.</p>
+                <div class="project-tags">
+                    <span class="tag">DHCP Server</span>
+                    <span class="tag">Linux Debian 11</span>
+                    <span class="tag">IP Reservation</span>
+                </div>
+                <a href="https://docs.google.com/document/d/1FIb41AfC0XqL-e6SP0WOIxXx9AnFS1JL/edit?usp=sharing&ouid=114674494588030533728&rtpof=true&sd=true" target="_blank" class="btn-link">📄 Buka Dokumen LKPD Linux - 3.2 DHCP Server 11.docx</a>
+            </div>
+
+            <div class="project-item">
+                <h4>CISCO Multi-Network Web Server & DNS Routing (PSAJ)</h4>
+                <p>Laporan Penilaian Sumatif Akhir Jenjang (PSAJ) berupa perancangan topologi jaringan kompleks terintegrasi Multi-Router, DNS Server, dan Web Server (smkwikrama.net & ujikom.com).</p>
+                <div class="project-tags">
+                    <span class="tag">Cisco Packet Tracer</span>
+                    <span class="tag">DNS Server</span>
+                    <span class="tag">Web Server</span>
+                    <span class="tag">Routing</span>
+                </div>
+                <a href="https://docs.google.com/document/d/17r4J4Yqei5CLuZZZs2mQrzz9e4if1RbS/edit?usp=sharing&ouid=114674494588030533728&rtpof=true&sd=true" target="_blank" class="btn-link">📄 Buka Dokumen ilham maulana cisco PSAJ.docx</a>
+            </div>
+
+            <div class="project-item">
+                <h4>Nagios Core Server Monitoring System</h4>
+                <p>Implementasi sistem monitoring infrastruktur server menggunakan Nagios Core pada Linux Debian. Projek ini meliputi pengujian koneksi jaringan, konfigurasi status service web Apache2, monitoring localhost (host & service), serta validasi port web up/down dan pemanfaatan plugin monitoring Nagios.</p>
+                <div class="project-tags">
+                    <span class="tag">Nagios Core</span>
+                    <span class="tag">Linux Server</span>
+                    <span class="tag">Apache2</span>
+                    <span class="tag">Monitoring</span>
+                    <span class="tag">Network Admin</span>
+                </div>
+                <a href="https://docs.google.com/document/d/18A1PSibj7B5_uN8w_NKPKfGZsQsWRzCA/edit?usp=sharing&ouid=114674494588030533728&rtpof=true&sd=true" target="_blank" class="btn-link">📄 Buka Dokumen LKPD Linux - MONITORING SERVER Nagios.docx</a>
+            </div>
+        </section>
+
+        <section id="kontak" class="tab-content">
+            <h2>Kontak</h2>
+            <div class="contact">
+                <p><strong>Email:</strong></p>
+                <a href="mailto:ilhammaulana@smkwikrama.sch.id">ilhammaulana@smkwikrama.sch.id</a>
+                <br><br>
+                <p><strong>WhatsApp:</strong></p>
+                <a href="https://wa.me/6283123422774" target="_blank">0831-2342-2774</a>
+            </div>
+        </section>
+
     </div>
-
-    <div class="card">
-        <h3>Web Server</h3>
-        <p>
-            Konfigurasi Apache dan Nginx untuk hosting website lokal.
-        </p>
-    </div>
-
-    <div class="card">
-        <h3>Manajemen Sistem</h3>
-        <p>
-            Monitoring resource CPU, RAM, Storage,
-            serta manajemen file dan permission.
-        </p>
-    </div>
-</section>
-
-<section id="monitoring">
-    <h2>Monitoring dan Tools</h2>
-
-    <ul>
-        <li>HTOP - Monitoring CPU dan RAM</li>
-        <li>Netstat - Monitoring Koneksi Jaringan</li>
-        <li>Ping dan Traceroute</li>
-        <li>Wireshark - Analisis Paket Jaringan</li>
-        <li>Zabbix (Dasar Monitoring Server)</li>
-        <li>Grafana Dashboard</li>
-        <li>Prometheus Monitoring</li>
-    </ul>
-</section>
-
-<section id="proyek">
-    <h2>Proyek PKL</h2>
-
-    <div class="card">
-        <h3>Konfigurasi Web Server Linux</h3>
-        <p>
-            Membuat web server menggunakan Ubuntu Server dan Nginx.
-        </p>
-    </div>
-
-    <div class="card">
-        <h3>Monitoring Server</h3>
-        <p>
-            Monitoring performa server menggunakan Grafana dan Prometheus.
-        </p>
-    </div>
-
-    <div class="card">
-        <h3>Konfigurasi Jaringan</h3>
-        <p>
-            Konfigurasi IP Address, DHCP, DNS, dan Routing sederhana.
-        </p>
-    </div>
-</section>
+</div>
 
 <footer>
     <p>© 2026 Ilham Maulana | Portfolio PKL TJKT</p>
 </footer>
+
+<script>
+function openTab(evt, tabId) {
+    var tabContents = document.getElementsByClassName("tab-content");
+    for (var i = 0; i < tabContents.length; i++) {
+        tabContents[i].classList.remove("active");
+    }
+
+    var tabLinks = document.getElementsByClassName("tab-link");
+    for (var i = 0; i < tabLinks.length; i++) {
+        tabLinks[i].classList.remove("active");
+    }
+
+    var targetTab = document.getElementById(tabId);
+    targetTab.classList.add("active");
+    
+    // Trik agar animasi fade-up selalu berjalan ulang setiap kali tombol diklik
+    targetTab.style.animation = 'none';
+    targetTab.offsetHeight; /* memicu reflow mesin browser */
+    targetTab.style.animation = null;
+
+    evt.currentTarget.classList.add("active");
+}
+</script>
 
 </body>
 </html>
